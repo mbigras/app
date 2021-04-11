@@ -4,12 +4,13 @@ import socket
 import flask
 
 app = flask.Flask(__name__)
+__version__ = "0.0.1"
 
 
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def hello(path):
-    message = f"host: {socket.gethostname()} full_path: {flask.request.full_path}"
+    message = f"version: {__version__} host: {socket.gethostname()} full_path: {flask.request.full_path}"
     app.logger.info(message)
     return f"{message}\n"
 
