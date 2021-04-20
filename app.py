@@ -2,8 +2,10 @@ import logging
 import socket
 
 import flask
+from prometheus_flask_exporter import PrometheusMetrics
 
 app = flask.Flask(__name__)
+metrics = PrometheusMetrics(app)
 
 
 @app.route("/", defaults={"path": ""})
