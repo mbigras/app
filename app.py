@@ -26,6 +26,24 @@ def hello(path):
         return f"{message}\n"
 
 
+@app.route("/ready")
+def ready():
+    app.logger.info("app is ready")
+    return "app is ready\n"
+
+
+@app.route("/alive")
+def alive():
+    app.logger.info("app is alive")
+    return "app is alive\n"
+
+
+@app.route("/startup")
+def startup():
+    app.logger.info("app has started")
+    return "app has started\n"
+
+
 if __name__ != "__main__":
     gunicorn_logger = logging.getLogger("gunicorn.error")
     app.logger.handlers = gunicorn_logger.handlers
