@@ -1,5 +1,6 @@
 import logging
 import socket
+import os
 
 import flask
 from prometheus_flask_exporter import PrometheusMetrics
@@ -7,13 +8,22 @@ from prometheus_flask_exporter import PrometheusMetrics
 app = flask.Flask(__name__)
 metrics = PrometheusMetrics(app)
 
+if os.environ.get("MAKE_UNHEALTHY"):
+    app.config["MAKE_UNHEALTHY"] = True
+
 
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def hello(path):
     message = f"host: {socket.gethostname()} full_path: {flask.request.full_path}"
     app.logger.info(message)
-    return f"{message}\n"
+    if app.config.get("MAKE_UNHEALTHY"):
+        app.logger.info(
+            "Simulating an unhealthy application because MAKE_UNHEALTHY is set"
+        )
+        return f"app is unhealthy\n", 500
+    else:
+        return f"{message}\n"
 
 
 if __name__ != "__main__":
