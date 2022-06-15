@@ -1,10 +1,10 @@
 # mbigras/app
 
-> App is a test application for experimenting with Application Delivery.
+> App is a test application for experimenting with [application delivery](https://www.hashicorp.com/resources/application-delivery-hashicorp) workflows.
 
 ## Overview
 
-This app is for experimenting with Application Delivery workflows.
+This app is for experimenting with application delivery workflows.
 
 ## Example
 
