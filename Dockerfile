@@ -1,5 +1,4 @@
-FROM python:3.7.9
-RUN apt update && apt install -y procps dnsutils net-tools vim tree psutils curl tcpdump util-linux bsdmainutils less file
+FROM python:3.8.7
 WORKDIR /app
 COPY requirements.txt ./
 RUN pip install -r requirements.txt

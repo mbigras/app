@@ -6,12 +6,12 @@
 
 This app is for experimenting with application delivery workflows.
 
-## Example
+## Run app
 
 1. Start a Docker container from the `mbigras/app` Docker image.
 
    ```
-   docker run -it -e PORT=8080 -p 8080:8080 mbigras/app
+   docker run -it -e PORT=8080 -e ENV=prod -p 8080:8080 mbigras/app
    ```
 
 1. Open a new terminal
@@ -24,7 +24,7 @@ This app is for experimenting with application delivery workflows.
    The output should look something like this:
 
    ```
-   host: e41dd797a91d full_path: /foo/bar?baz=bat
+   {"app":"app","env":"prod","params":{"baz":"bat"},"path":"foo/bar","version":"unset"}
    ```
 
 1. Stop the container by pressing Control - C

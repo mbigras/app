@@ -3,7 +3,7 @@ name: ci
 
 on:
   push:
-    branches: master
+    branches: main
 
 jobs:
   build_and_push:
@@ -29,5 +29,5 @@ jobs:
           push: true
           tags: mbigras/app:latest,mbigras/app:${{ steps.app_version.outputs.version }}
 
-      - name: Image digest
+      - name: Pint image identifier
         run: echo ${{ steps.docker_build.outputs.digest }}
