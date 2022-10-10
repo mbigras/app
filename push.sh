@@ -3,4 +3,5 @@
 
 tag=$(git rev-parse --short HEAD)
 
-docker push mbigras/app:$tag mbigras/app:latest
+docker push mbigras/app:$tag
+docker push mbigras/app:latest
