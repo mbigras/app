@@ -15,5 +15,8 @@ def hello(path):
         app=app.name,
         env=app.config["ENV"],
         version=app.config["VERSION"],
+        features=[
+            "feature1",
+        ],
 
     )
