@@ -6,10 +6,10 @@ COPY app.py entrypoint.sh ./
 
 ARG APP=app
 ARG ENV=prod
-ARG VERSION=unset
+ARG TAG=unset
 
 ENV APP=$APP
 ENV ENV=$ENV
-ENV VERSION=$VERSION
+ENV TAG=$TAG
 
 ENTRYPOINT ["/app/entrypoint.sh"]
