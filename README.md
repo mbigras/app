@@ -18,7 +18,7 @@ See the following relevant resources.
 1. Run an `mbigras/app` Docker container.
 
    ```
-   docker run -it -e APP=app1 -e ENV=prod -e PORT=8080 -p 8080:8080 mbigras/app
+   docker run --rm -it -e APP=app1 -e ENV=prod -e PORT=8080 -p 8080:8080 mbigras/app
    ```
 
 1. Open a new terminal
@@ -46,4 +46,4 @@ See the following relevant resources.
    }
    ```
 
-1. Stop the container by pressing Control - C
+1. Stop the container by pressing Control - C.
