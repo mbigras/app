@@ -1,0 +1,32 @@
+# https://github.com/jannekem/actions-playground/blob/master/.github/workflows/deploy.yml
+name: Deploy on pull request comment
+
+on:
+  issue_comment:
+    types:
+      - created
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.issue.pull_request && startsWith(github.event.comment.body, "/deploy") }}
+    steps:
+    - name: Get deployment variables
+      run: |
+        # Example: /deploy app 3cc67f7982919be8530cd7600e1ed70fd60b99c8 dev
+        echo APP=$(awk '{ print $2 }' <<< "$COMMENT") >> GITHUB_ENV
+        echo TAG=$(awk '{ print $3 }' <<< "$COMMENT") >> GITHUB_ENV
+        echo ENV=$(awk '{ print $4 }' <<< "$COMMENT") >> GITHUB_ENV
+      env:
+        COMMENT: "${{ github.event.comment.body }}"
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Checkout Pull Request
+      run: gh pr checkout ${{ github.event.issue.number }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Deploy your app
+      run: ./deploy.sh
