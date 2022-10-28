@@ -21,7 +21,7 @@ jobs:
         COMMENT: "${{ github.event.comment.body }}"
 
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Checkout Pull Request
       run: gh pr checkout ${{ github.event.issue.number }}
