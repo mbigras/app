@@ -7,9 +7,14 @@ COPY app.py entrypoint.sh ./
 ARG APP=app
 ARG ENV=prod
 ARG TAG=unset
+ARG PORT=80
 
 ENV APP=$APP
 ENV ENV=$ENV
 ENV TAG=$TAG
 
+ENV ADDRESS=0.0.0.0
+ENV PORT=$PORT
+
 ENTRYPOINT ["/app/entrypoint.sh"]
+EXPOSE $PORT
