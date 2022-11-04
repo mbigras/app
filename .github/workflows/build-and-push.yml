@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout GitHub repository
-      run: gh repo checkout mbigras/app .
+      run: gh repo clone mbigras/app .
 
     - name: Build Docker image
       run: ./build.sh
