@@ -9,6 +9,8 @@ jobs:
     steps:
     - name: Checkout GitHub repository
       run: gh repo clone mbigras/app .
+      env:
+        GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
     - name: Build Docker image
       run: ./build.sh
