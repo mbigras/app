@@ -31,17 +31,19 @@ See the following relevant resources.
    The output should look like the following.
 
    ```
-   $ curl localhost:8080/foo/bar?baz=bat
+   $ curl localhost:8080/foo?bar=bar
    {
      "app": "app1",
+     "tag": "21b5997d22bac3324532aaea074db3c9108c2535",
      "env": "prod",
-     "tag": "b46edb54bb829b892e19dc72a640db45b0521a1f",
-     "features": [
-       "feature1"
-     ],
-     "path": "foo/bar",
+     "owner": "unset",
+     "features": "unset",
+     "speed": "unset",
+     "reliability": "unset",
+     "host": "63cc1f7a05c5",
+     "path": "foo",
      "params": {
-       "baz": "bat"
+       "bar": "bar"
      }
    }
    ```
