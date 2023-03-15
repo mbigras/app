@@ -15,6 +15,9 @@ app.config["ORG"] = os.environ.get("ORG", "unset")
 app.config["FEATURES"] = os.environ.get("FEATURES", "unset")
 app.config["SPEED"] = os.environ.get("SPEED", "unset")
 app.config["RELIABILITY"] = os.environ.get("RELIABILITY", "unset")
+app.config["EXAMPLESECRET1"] = os.environ.get("EXAMPLESECRET1", "unset")
+app.config["EXAMPLESECRET2"] = os.environ.get("EXAMPLESECRET2", "unset")
+app.config["EXAMPLESECRET3"] = os.environ.get("EXAMPLESECRET3", "unset")
 
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
@@ -29,6 +32,9 @@ def hello(path):
         features=app.config["FEATURES"],
         speed=app.config["SPEED"],
         reliability=app.config["RELIABILITY"],
+        examplesecret1=app.config["EXAMPLESECRET1"],
+        examplesecret2=app.config["EXAMPLESECRET2"],
+        examplesecret3=app.config["EXAMPLESECRET3"],
         host=socket.gethostname(),
         path=path,
         params=flask.request.args,
